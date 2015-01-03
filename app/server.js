@@ -8,6 +8,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
+var requestLimit = require('./routes/requestLimit');
 var users = require('./routes/users');
 
 var app = express();
@@ -28,11 +29,8 @@ app.use(session({secret:'foobar',
     store: new MongoStore({mongooseConnection: require('./mongo')})
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(function(req, res, next) { 
-    req.session.reqCount = req.session.reqCount + 1 || 1;
-    next();
-},routes);
-app.use('/users', users);
+app.use(requestLimit(5), routes);
+app.use('/users', requestLimit(3), users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
