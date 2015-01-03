@@ -7,8 +7,8 @@ module.exports = {
   },
   js: {
     files: ['Gruntfile.js',' grunt/**.js','app/**/*.js', 'public/**/*.js', 'test/**/*.js', 'index.js'],
+    tasks: ['jshint'],
     options: {
-      tasks: ['jshint:all'],
       livereload: true,
       spawn: false
     },
