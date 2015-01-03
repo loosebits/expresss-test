@@ -10,6 +10,7 @@ module.exports = {
     tasks: ['jshint'],
     options: {
       livereload: true,
+      debounceDelay: 1500,
       spawn: false
     },
   },
