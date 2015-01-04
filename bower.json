@@ -1,0 +1,30 @@
+{
+  "name": "express-test",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/loosebits/expresss-test",
+  "authors": [
+    "Rand McNeely <loosebits@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-resource": "~1.3.8",
+    "bootstrap": "~3.3.1",
+    "ui-router": "~0.2.13",
+    "angularAMD": "~0.2.1",
+    "lodash": "~2.4.1",
+    "angular-bootstrap": "~0.12.0"
+  },
+  "resolutions": {
+    "angular": "1.3.8"
+  }
+}
