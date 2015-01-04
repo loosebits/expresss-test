@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -21,7 +22,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret:'foobar', resave: false, saveUninitialized: true}));
+app.use(session({secret:'foobar', 
+    resave: false, 
+    saveUninitialized: true, 
+    store: new MongoStore({mongooseConnection: require('./mongo')})
+}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', routes);
