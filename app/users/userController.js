@@ -3,39 +3,51 @@ var _ = require('lodash-node');
 require('./userModel');
 var User = mongoose.model('User');
 
-exports.get = function(req, res, next) {
+exports.load = function(req, res, next) {
   User.findById(req.params._id, function(err, user) {
     if (err) return next(err);
-    res.json(user || {});
+    req.user = user;
+    next();
+  });
+};
+
+exports.login = function(req, res, next) {
+  User.findOne({userId: req.body.userId, password: req.body.password}, function(err, user) {
+    if (err) return next(err);
+    req.user = user;
+    next();
   });
 };
 
 exports.query = function(req, res, next) {
   User.find(function(err, users) {
     if (err) return next(err);
-    res.json(users);
+    req.users = users;
+    next();
   });
 };
 
-exports.put = function(req, res, next) {
+exports.update = function(req, res, next) {
   User.findById(req.params._id, function(err, user) {
       _.extend(user, req.body).save(function(err, user) {
       if (err) return next(err);
-      res.json(user);
+      req.user = user;
+      next();
     });
   });
 };
 
-exports.post = function(req, res, next) {
+exports.create = function(req, res, next) {
   new User(req.body).save(function(err, user) {
-    if (err) next(err);
-    res.json(user);
+    if (err) return next(err);
+    req.user = user;
+    next();
   });
 };
 
 exports.delete = function(req, res, next) {
   User.remove({_id: req.params._id}, function(err) {
     if (err) return next(err);
-    res.json({});
+    next();
   });
 };
