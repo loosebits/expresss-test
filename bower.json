@@ -22,7 +22,8 @@
     "ui-router": "~0.2.13",
     "angularAMD": "~0.2.1",
     "lodash": "~2.4.1",
-    "angular-bootstrap": "~0.12.0"
+    "angular-bootstrap": "~0.12.0",
+    "angular-error-display": "https://github.com/loosebits/angular-error-display.git"
   },
   "resolutions": {
     "angular": "1.3.8"

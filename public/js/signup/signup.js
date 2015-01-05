@@ -1,12 +1,16 @@
-define(['../resources/users'], function() {
-  return ['$scope', 'Users', '$state', function($scope, Users, $state) {
+define(['../resources/users','ngload!angular-input-match'], function() {
+  return ['$scope', 'Users', '$state', 'errorMessageService', function($scope, Users, $state, errorMessageService) {
+    errorMessageService.hideErrors();
     $scope.submit = function() {
-      Users.signUp($scope.model.user, function(user) {
-        if (user.userId) {
-          $scope.authentication.user = user;
-          $state.go('root');
-        }
-      });
+      errorMessageService.showErrors();
+      if ($scope.form.$valid) {
+        Users.signUp($scope.model.user, function(user) {
+          if (user.userId) {
+            $scope.authentication.user = user;
+            $state.go('root');
+          }
+        });
+      }
     };
   }];
 });

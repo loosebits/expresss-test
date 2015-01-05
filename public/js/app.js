@@ -1,5 +1,5 @@
-define(['require','angularAMD','ui-router'], function(require, angularAMD) {
-  var app = angular.module('express-test',['ui.router'])
+define(['require','angularAMD','ui-router','angular-error-display'], function(require, angularAMD) {
+  var app = angular.module('express-test',['ui.router','ngErrorDisplay'])
   .config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('root', angularAMD.route({
       url: '',
@@ -16,6 +16,10 @@ define(['require','angularAMD','ui-router'], function(require, angularAMD) {
       templateUrl: require.toUrl('login/login.html'),
       controllerUrl: 'login/login'
     }));
+  }]).config(['errorMessageServiceProvider',function(errorMessageServiceProvider) {
+    errorMessageServiceProvider.errors({
+      required: 'This field is required',
+      email: 'Please enter a valid email'});
   }]);
   return angularAMD.bootstrap(app);
 });

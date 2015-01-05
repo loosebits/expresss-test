@@ -1,14 +1,18 @@
 define(['../resources/users'], function() {
-  return ['$scope','Users', '$state', function($scope, Users, $state) {
+  return ['$scope','Users', '$state', 'errorMessageService', function($scope, Users, $state, errorMessageService) {
+    errorMessageService.hideErrors();
     $scope.submit = function() {
-      Users.login($scope.model, function(user) {
-        if (!user.userId) {
-          $scope.error = "You've entered an invalid id or password.";
-        } else {
-          $scope.authentication.user = user;
-          $state.go('root');
-        }
-      });
+      errorMessageService.showErrors();
+      if ($scope.form.$valid) {
+        Users.login($scope.model, function(user) {
+          if (!user.userId) {
+            $scope.error = "You've entered an invalid id or password.";
+          } else {
+            $scope.authentication.user = user;
+            $state.go('root');
+          }
+        });
+      }
     };
   }];
 });
