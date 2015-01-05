@@ -4,8 +4,9 @@
       <a class='navbar-brand' ui-sref='root'>Express Test</a>
     </div>
     <ul class='nav navbar-nav navbar-right'>
-      <li ui-sref-active='active'><a ui-sref='root.login'>Login</a></li>
-      <li ui-sref-active='active'><a ui-sref='root.signup'>Signup</a></li>
+      <li ui-sref-active='active' ng-if='!authentication.user'><a ui-sref='root.login'>Login</a></li>
+      <li ui-sref-active='active' ng-if='!authentication.user'><a ui-sref='root.signup'>Signup</a></li>
+      <li ui-sref-active='active' ng-if='authentication.user'><a ng-click='logout()'>Logout</a></li>
     </ul>
   </div>
 </div>
