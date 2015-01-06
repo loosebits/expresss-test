@@ -4,6 +4,10 @@ var _ = require('lodash-node');
 require('./userModel');
 var User = mongoose.model('User');
 
+exports.roles = function(req, res, next) {
+  req.roles = require('../constants').roles;
+};
+
 exports.load = function(req, res, next) {
   User.findById(req.params._id, function(err, user) {
     if (err) return next(err);
