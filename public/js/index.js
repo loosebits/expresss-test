@@ -3,7 +3,7 @@ define(['ngload!resources/users'], function() {
   return ['$scope', 'Users', '$state', function($scope, Users, $state) {
     $scope.authentication = {};
     Users.authentication(function(user) {
-      if (user.userId) {
+      if (user._id) {
         $scope.authentication.user = user;
       }
     });

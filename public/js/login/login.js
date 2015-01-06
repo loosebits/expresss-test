@@ -6,7 +6,7 @@ define(['../resources/users'], function() {
       errorMessageService.showErrors();
       if ($scope.form.$valid) {
         Users.login($scope.model, function(user) {
-          if (!user.userId) {
+          if (!user._id) {
             $scope.error = "You've entered an invalid id or password.";
           } else {
             $scope.authentication.user = user;

@@ -6,7 +6,7 @@ define(['../resources/users','ngload!angular-input-match'], function() {
       errorMessageService.showErrors();
       if ($scope.form.$valid) {
         Users.signUp($scope.model.user, function(user) {
-          if (user.userId) {
+          if (user._id) {
             $scope.authentication.user = user;
             $state.go('root');
           }
