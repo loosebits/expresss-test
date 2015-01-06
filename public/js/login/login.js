@@ -1,4 +1,5 @@
 define(['../resources/users'], function() {
+  'use strict';
   return ['$scope','Users', '$state', 'errorMessageService', function($scope, Users, $state, errorMessageService) {
     errorMessageService.hideErrors();
     $scope.submit = function() {

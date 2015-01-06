@@ -1,3 +1,4 @@
+'use strict';
 var router = require('express').Router();
 var users = require('./userController');
 var auth = require('./authentication');

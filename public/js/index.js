@@ -1,4 +1,5 @@
 define(['ngload!resources/users'], function() {
+  'use strict';
   return ['$scope', 'Users', '$state', function($scope, Users, $state) {
     $scope.authentication = {};
     Users.authentication(function(user) {

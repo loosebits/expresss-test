@@ -1,4 +1,5 @@
 define(['require','angularAMD','ui-router','angular-error-display'], function(require, angularAMD) {
+  'use strict';
   var app = angular.module('express-test',['ui.router','ngErrorDisplay'])
   .config(['$stateProvider',function($stateProvider) {
     $stateProvider.state('root', angularAMD.route({

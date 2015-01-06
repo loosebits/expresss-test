@@ -1,3 +1,4 @@
+'use strict';
 module.exports = {
   all: {
     src: ['**/*.js','!node_modules/**','!public/lib/**'],

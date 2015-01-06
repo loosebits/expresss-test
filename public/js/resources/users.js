@@ -1,4 +1,5 @@
 define(['angularAMD','ngload!angular-resource'], function(app) {
+  'use strict';
   app.factory('Users', ['$resource', function($resource) {
     return $resource('users/:_id',{_id: '@_id'}, {
       create: {method: 'POST'},

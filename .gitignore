@@ -1,3 +1,5 @@
 /node_modules
 /.bower-*
 /public/lib
+*.sublime-project
+*.sublime-workspace

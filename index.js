@@ -1,3 +1,4 @@
+'use strict';
 var app = require('./app/server');
 var db = require('./app/mongo');
 

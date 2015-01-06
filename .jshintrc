@@ -1,0 +1,9 @@
+{
+    "globals": {
+        "define": false
+        ,"angular": false
+    }
+    ,"node": true
+    ,"browser": true
+    ,"strict": true
+}
