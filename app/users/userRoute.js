@@ -8,9 +8,9 @@ function dataSender(name) {
   return function(req, res, next) {
     console.log('data sent');
     if (name) {
-      res.json(req[name]);
+      res.json(req[name] || {});
     } else {
-      res.json(null);
+      res.json({});
     }
   };
 }
