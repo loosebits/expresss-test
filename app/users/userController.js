@@ -26,9 +26,11 @@ exports.login = function(req, res, next) {
 
 exports.query = function(req, res, next) {
   var q = _.extend({}, req.query);
+  console.log(q);
   User.find(q, function(err, users) {
     if (err) return next(err);
     req.users = users;
+    console.log(users);
     next();
   });
 };

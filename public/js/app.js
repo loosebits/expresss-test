@@ -16,7 +16,18 @@ define(['require','angularAMD','ui-router','angular-error-display'], function(re
       url: 'login',
       templateUrl: require.toUrl('login/login.html'),
       controllerUrl: 'login/login'
-    }));
+    }))
+    .state('root.users', angularAMD.route({
+      url: 'users',
+      templateUrl: require.toUrl('users/users.html'),
+      controllerUrl: 'users/users'
+    }))
+    .state('root.users.user', angularAMD.route({
+      url: '/:_id',
+      templateUrl: require.toUrl('users/user.html'),
+      controllerUrl: 'users/user'
+    }))
+    ;
   }]).config(['errorMessageServiceProvider',function(errorMessageServiceProvider) {
     errorMessageServiceProvider.errors({
       required: 'This field is required',

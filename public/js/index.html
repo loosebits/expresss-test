@@ -3,6 +3,9 @@
     <div class='navbar-header'>
       <a class='navbar-brand' ui-sref='root'>Express Test</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li ui-sref-active='active' ng-if='authentication.user.admin'><a ui-sref='root.users'>Users</a></li>
+    </ul>
     <ul class='nav navbar-nav navbar-right'>
       <li ui-sref-active='active' ng-if='!authentication.user'><a ui-sref='root.login'>Login</a></li>
       <li ui-sref-active='active' ng-if='!authentication.user'><a ui-sref='root.signup'>Signup</a></li>

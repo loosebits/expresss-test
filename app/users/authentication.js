@@ -17,6 +17,7 @@ module.exports = {
       }
     };
   },
+  
   logout: function(req, res, next) {
     delete req.session.user;
     next();

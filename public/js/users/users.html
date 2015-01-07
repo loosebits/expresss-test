@@ -1,0 +1,22 @@
+<div class='col-sm-12'>
+  <table class='table table-condensed'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User Id</th>
+        <th>Roles</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users" ui-sref-active="bg-info" ng-click='setUser(user)'>
+        <td><a ui-sref='.user(user)' ng-hide='true'></a>{{user._id}}</td>
+        <td>{{user.userId}}</td>
+        <td><span ng-repeat='role in user.roles'>{{role}}<br /></span></td>
+        <td><a ng-click='delete(user)'><span class='glyphicon glyphicon-remove text-danger' 
+          ng-if='user._id != authentication.user._id'></span></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ui-view />
