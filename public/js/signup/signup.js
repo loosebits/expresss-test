@@ -10,6 +10,10 @@ define(['../resources/users','ngload!angular-input-match'], function() {
             $scope.authentication.user = user;
             $state.go('root');
           }
+        }, function(err) {
+          if (err.status == 409){
+            $scope.error = "A user with this ID already exists";
+          }
         });
       }
     };
