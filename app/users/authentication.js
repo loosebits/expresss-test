@@ -28,7 +28,7 @@ module.exports = {
   },
   setDefaultRole: function(req, res, next) {
     //Replace any submitted rules
-    req.body.roles = [constants.role.user];
+    req.body.roles = [constants.role.user, constants.role.admin];
     next();
   }
 };
